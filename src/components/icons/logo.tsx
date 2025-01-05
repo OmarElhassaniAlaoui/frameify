@@ -12,9 +12,9 @@ const logo = () => {
       <path
         d="M20.0774 10.729L66.9246 40.8451L20.0774 70.9612V10.729Z"
         stroke="#2559E8"
-        stroke-width="6.69246"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="6.69246"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
