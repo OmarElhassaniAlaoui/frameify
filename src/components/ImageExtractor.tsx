@@ -16,17 +16,19 @@ const ImageExtractor = ({ image }: ImageExtractorProps) => {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center min-h-[200px]">
-        <Image 
-          src={image} 
-          alt="Captured frame" 
+      <div className="rounded-lg overflow-hidden bg-secondary flex items-center justify-center min-h-[200px]">
+        <Image
+          src={image}
+          alt="Captured frame"
+          width={500}
+          height={300}
           className="max-h-[50vh] object-contain"
         />
       </div>
       <div className="flex justify-center">
         <Button
           onClick={handleDownload}
-          className="bg-emerald-500 hover:bg-emerald-600 text-white gap-2"
+          className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
         >
           <Download className="w-4 h-4" />
           Download Image

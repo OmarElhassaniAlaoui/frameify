@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { Play } from "lucide-react";
 import Logo from "@/components/icons/logo";
 import Avatar from "@/components/avatar";
+import ModeToggle from "@/components/themeToggle";
 
 const Index = () => {
   const [videoFile, setVideoFile] = useState<File | null>(null);
@@ -52,7 +53,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-800">
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
       <div className="max-w-4xl mx-auto p-6 space-y-8">
         {/* Header */}
         <div className="flex items-center gap-3">
@@ -60,17 +61,22 @@ const Index = () => {
             <Logo />
           </div>
           <div className="text-left">
-            <h1 className="text-2xl font-bold text-gray-900">Frameify</h1>
-            <p className="text-gray-500">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              Frameify
+            </h1>
+            <p className="text-gray-500 dark:text-gray-400">
               Extract high-quality frames from your videos
             </p>
           </div>
+          <div className="flex-1 text-right">
+            <ModeToggle />
+          </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border p-8 space-y-6">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border dark:border-gray-700 p-8 space-y-6">
           {!videoFile ? (
             <>
-              <h2 className="text-xl font-semibold text-center">
+              <h2 className="text-xl font-semibold text-center text-gray-900 dark:text-gray-100">
                 Upload Video
               </h2>
               <VideoUploader onUpload={handleVideoUpload} />
@@ -81,7 +87,7 @@ const Index = () => {
 
               <div className="flex gap-4 items-end">
                 <div className="flex-1">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Time (seconds)
                   </label>
                   <Input
@@ -89,11 +95,12 @@ const Index = () => {
                     placeholder="Enter the Timing"
                     value={timeInSeconds}
                     onChange={(e) => setTimeInSeconds(e.target.value)}
+                    className="dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
                   />
                 </div>
                 <Button
                   onClick={handlePreview}
-                  className="bg-blue-600 hover:bg-blue-700"
+                  className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800"
                 >
                   <Play className="w-4 h-4 mr-2" /> Preview
                 </Button>
@@ -101,7 +108,9 @@ const Index = () => {
 
               {capturedImage && (
                 <div className="space-y-4">
-                  <h2 className="text-xl font-semibold text-center">Preview</h2>
+                  <h2 className="text-xl font-semibold text-center text-gray-900 dark:text-gray-100">
+                    Preview
+                  </h2>
                   <ImageExtractor image={capturedImage} />
                 </div>
               )}
@@ -110,7 +119,7 @@ const Index = () => {
         </div>
         <div className="flex flex-row justify-between">
           <div className="flex items-center gap-4">
-            <span className="text-lg font-medium text-gray-700">
+            <span className="text-lg font-medium text-gray-700 dark:text-gray-300">
               Developed by:
             </span>
             <Avatar
@@ -130,31 +139,24 @@ const Index = () => {
             />
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-lg font-medium text-gray-700">
+            <span className="text-lg font-medium text-gray-700 dark:text-gray-300">
               Designed by:
             </span>
             <Avatar
               avatar={"/images/zakaria.png"}
               name={"Zakaria Zyami"}
               links={[
-                { label: "Instagram", url: "https://www.instagram.com/zakaria_zyami/ " },
+                {
+                  label: "Instagram",
+                  url: "https://www.instagram.com/zakaria_zyami/ ",
+                },
                 { label: "X (Twitter)", url: "" },
               ]}
             />
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="flex  justify-between items-start pt-8 text-gray-600">
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-gray-900">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-gray-900">
-              Contact
-            </a>
-          </div>
-        </div>
+        
       </div>
     </div>
   );

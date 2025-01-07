@@ -7,7 +7,7 @@ interface VideoPlayerProps {
 const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(
   ({ videoFile }, ref) => {
     return (
-      <div className="relative rounded-lg overflow-hidden bg-gray-100">
+      <div className="relative rounded-lg overflow-hidden bg-secondary">
         <video
           ref={ref}
           className="w-full max-h-[70vh] object-contain"
