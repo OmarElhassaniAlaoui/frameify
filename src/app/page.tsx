@@ -6,10 +6,13 @@ import ImageExtractor from "../components/ImageExtractor";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { Play } from "lucide-react";
+import { Instagram, Play } from "lucide-react";
 import Logo from "@/components/icons/logo";
-import Avatar from "@/components/avatar";
 import ModeToggle from "@/components/themeToggle";
+import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
+import GithubIcon from "@/components/icons/GithubIcon";
+import LinkedinIcon from "@/components/icons/LinkedinIcon";
+import TwitterIcon from "@/components/icons/TwitterIcon";
 
 const Index = () => {
   const [videoFile, setVideoFile] = useState<File | null>(null);
@@ -51,6 +54,50 @@ const Index = () => {
     setCapturedImage(image);
     toast.success("Frame captured successfully");
   };
+
+  const people = [
+    {
+      id: 1,
+      name: "Omar Elhassani Alaoui",
+      designation: "Software Developer",
+      image: "/images/omar.png",
+      socialLinks: [
+        {
+          platform: "Github",
+          url: "https://github.com/OmarElhassaniAlaoui",
+          icon: <GithubIcon size={20} />,
+        },
+        {
+          platform: "LinkedIn",
+          url: "https://www.linkedin.com/in/omar-el-hassani-alaoui/",
+          icon: <LinkedinIcon size={20} />,
+        },
+        {
+          platform: "X",
+          url: "https://x.com/omarelhassani_",
+          icon: <TwitterIcon size={20} />,
+        },
+      ],
+    },
+    {
+      id: 2,
+      name: "Zakaria Zyami",
+      designation: "UX/UI Designer",
+      image: "/images/zakaria.png",
+      socialLinks: [
+        {
+          platform: "Instagram",
+          url: "https://www.instagram.com/zakaria_zyami/ ",
+          icon: <Instagram  size={20} />,
+        },
+        {
+          platform: "X (Twitter)",
+          url: "",
+          icon: <TwitterIcon size={20} />,
+        },
+      ],
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
@@ -117,46 +164,10 @@ const Index = () => {
             </div>
           )}
         </div>
-        <div className="flex flex-row justify-between">
-          <div className="flex items-center gap-4">
-            <span className="text-lg font-medium text-gray-700 dark:text-gray-300">
-              Developed by:
-            </span>
-            <Avatar
-              avatar={"/images/omar.png"}
-              name={"Omar Elhassani Alaoui"}
-              links={[
-                {
-                  label: "Github",
-                  url: "https://github.com/OmarElhassaniAlaoui",
-                },
-                {
-                  label: "LinkedIn",
-                  url: "https://www.linkedin.com/in/omar-el-hassani-alaoui/",
-                },
-                { label: "X", url: "https://x.com/omarelhassani_" },
-              ]}
-            />
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="text-lg font-medium text-gray-700 dark:text-gray-300">
-              Designed by:
-            </span>
-            <Avatar
-              avatar={"/images/zakaria.png"}
-              name={"Zakaria Zyami"}
-              links={[
-                {
-                  label: "Instagram",
-                  url: "https://www.instagram.com/zakaria_zyami/ ",
-                },
-                { label: "X (Twitter)", url: "" },
-              ]}
-            />
-          </div>
+        <div className="flex items-center gap-4">
+          <div className="text-lg font-medium text-gray-700 dark:text-gray-300"> Made by : </div>
+          <AnimatedTooltip items={people} />
         </div>
-
-        
       </div>
     </div>
   );
