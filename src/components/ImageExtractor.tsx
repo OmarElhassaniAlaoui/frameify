@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button';
-import { Download } from 'lucide-react';
-import Image from 'next/image';
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
+import Image from "next/image";
 
 interface ImageExtractorProps {
   image: string;
@@ -8,7 +8,7 @@ interface ImageExtractorProps {
 
 const ImageExtractor = ({ image }: ImageExtractorProps) => {
   const handleDownload = () => {
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = image;
     link.download = `captured-frame-${Date.now()}.png`;
     link.click();
